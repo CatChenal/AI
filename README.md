@@ -1,3 +1,5 @@
+# Readme from https://github.com/udacity/artificial-intelligence
+
 # Artificial Intelligence Nanodegree Program Resources
 
 ## Classroom Exercises
