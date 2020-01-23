@@ -113,21 +113,21 @@ def naked_twins(values):
     strategy repeatedly).
     """
     # This is the translation of the pseudocode provided in pseudocode.md, but without
-    # copying the dict.
+    # copying the dict, and further amended as per reviewer.
+
+    # Gather the boxes of length 2:
+    twos = [b for b in values.keys() if len(values[b]) == 2]
     
-    # For each cell and for each of its peers:
-    for boxA in values:
-        for peerA in peers[boxA]:
-            # If we have a Naked Pair:
-            if values[boxA] == values[peerA] and len(values[boxA]) == 2:
-                
-                ## Pool all the twins' common peers together:
-                pool = peers[boxA].intersection(peers[peerA])
-                for p in pool:
-                    if len(values[p]) > 2:
-                        for dgit in values[boxA]:
-                            values[p] = values[p].replace(dgit,'')
-                            #values = assign_value(values, p, values[p].replace(dgit,''))
+    # Gather the same twins from the twos and their peers:
+    twins = ( [[boxA, peerA] for boxA in twos
+                             for peerA in peers[boxA]
+                             if set(values[boxA]) == set(values[peerA])] )
+
+    for boxA, peerA in twins:
+        # Delete the two digits from all common peers:
+        for p in set(peers[boxA]).intersection(set(peers[peerA])):
+            for dgit in values[boxA]:
+                values = assign_value(values, p, values[p].replace(dgit,''))
     return values
 
 
