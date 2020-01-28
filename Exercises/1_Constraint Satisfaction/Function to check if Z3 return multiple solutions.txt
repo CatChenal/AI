@@ -1,0 +1,26 @@
+Function to check if Z3 return multiple solutions
+#https://yurichev.com/writings/SAT_SMT_by_example.pdf
+
+# copypasted from http://stackoverflow.com/questions /11867611/z3py -checking -allsolutions -for-equation
+result=[]
+while True:
+   if s.check() == sat:
+      m = s.model()
+      print m[inp]
+      result.append(m)
+
+      # Create a new constraint the blocks the current model
+      block = []
+      for d in m:
+          # d is a declaration
+          if d.arity() > 0:
+             raise Z3Exception("uninterpreted functions are not supported")
+          # create a constant from declaration
+          c=d()
+          if is_array(c) or c.sort().kind() == Z3_UNINTERPRETED_SORT:
+             raise Z3Exception("arrays and uninterpreted sorts are not supported")
+          block.append(c != m[d])
+      s.add(Or(block))
+   else:
+      print "results total=",len(result)
+   break

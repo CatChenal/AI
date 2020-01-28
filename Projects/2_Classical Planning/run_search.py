@@ -1,11 +1,18 @@
 
 import argparse
 
-from aimacode.search import (breadth_first_search, astar_search,
-    breadth_first_tree_search, depth_first_graph_search, uniform_cost_search,
-    greedy_best_first_graph_search, depth_limited_search,
-    recursive_best_first_search)
-from air_cargo_problems import air_cargo_p1, air_cargo_p2, air_cargo_p3, air_cargo_p4
+from aimacode.search import (breadth_first_search,
+                             astar_search,
+                             breadth_first_tree_search,
+                             depth_first_graph_search,
+                             uniform_cost_search,
+                             greedy_best_first_graph_search,
+                             depth_limited_search,
+                             recursive_best_first_search)
+from air_cargo_problems import (air_cargo_p1,
+                                air_cargo_p2,
+                                air_cargo_p3,
+                                air_cargo_p4)
 
 from _utils import run_search
 
@@ -30,13 +37,13 @@ You must either use the -m flag to run in manual mode, or use both the -p and
 choices for each include:
 """
 
-PROBLEMS = [["Air Cargo Problem 1", air_cargo_p1],
-            ["Air Cargo Problem 2", air_cargo_p2],
-            ["Air Cargo Problem 3", air_cargo_p3],
-            ["Air Cargo Problem 4", air_cargo_p4]]
-SEARCHES = [["breadth_first_search", breadth_first_search, ""],
-            ['depth_first_graph_search', depth_first_graph_search, ""],
-            ['uniform_cost_search', uniform_cost_search, ""],
+PROBLEMS = [['Air Cargo Problem 1', air_cargo_p1],
+            ['Air Cargo Problem 2', air_cargo_p2],
+            ['Air Cargo Problem 3', air_cargo_p3],
+            ['Air Cargo Problem 4', air_cargo_p4]]
+SEARCHES = [['breadth_first_search', breadth_first_search, ''],
+            ['depth_first_graph_search', depth_first_graph_search, ''],
+            ['uniform_cost_search', uniform_cost_search, ''],
             ['greedy_best_first_graph_search', greedy_best_first_graph_search, 'h_unmet_goals'],
             ['greedy_best_first_graph_search', greedy_best_first_graph_search, 'h_pg_levelsum'],
             ['greedy_best_first_graph_search', greedy_best_first_graph_search, 'h_pg_maxlevel'],
@@ -77,6 +84,7 @@ def main(p_choices, s_choices):
 
             problem_instance = problem_fn()
             heuristic_fn = None if not heuristic else getattr(problem_instance, heuristic)
+            
             run_search(problem_instance, search_fn, heuristic_fn)
 
 
