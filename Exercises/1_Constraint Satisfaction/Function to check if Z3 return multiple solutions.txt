@@ -1,7 +1,7 @@
 Function to check if Z3 return multiple solutions
 #https://yurichev.com/writings/SAT_SMT_by_example.pdf
 
-# copypasted from http://stackoverflow.com/questions /11867611/z3py -checking -allsolutions -for-equation
+# copy pasted from http://stackoverflow.com/questions/11867611/z3py-checking-allsolutions-for-equation
 result=[]
 while True:
    if s.check() == sat:
