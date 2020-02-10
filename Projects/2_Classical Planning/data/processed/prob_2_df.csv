@@ -1,0 +1,12 @@
+index	Problem	Searcher	Actions	Expansions	GoalTests	NewNodes	PlanLength	ElapsedSeconds	Minutes	Air cargo problem	Cargos	Planes	Airports	Goal
+1	Air Cargo Problem 2	breadth_first_search	72.0	3343.0	4609.0	30503.0	9.0	1.1433	0.019	2	3	3	3	3
+2	Air Cargo Problem 2	depth_first_graph_search	72.0	624.0	625.0	5602.0	619.0	1.5969	0.027	2	3	3	3	3
+3	Air Cargo Problem 2	uniform_cost_search	72.0	5154.0	5156.0	46618.0	9.0	1.8919	0.032	2	3	3	3	3
+4	Air Cargo Problem 2	greedy_best_first_graph_search h_unmet_goals	72.0	17.0	19.0	170.0	9.0	0.0105	0.0	2	3	3	3	3
+5	Air Cargo Problem 2	greedy_best_first_graph_search h_pg_levelsum	72.0	9.0	11.0	86.0	9.0	5.2777	0.088	2	3	3	3	3
+6	Air Cargo Problem 2	greedy_best_first_graph_search h_pg_maxlevel	72.0	27.0	29.0	249.0	9.0	3.0638	0.051	2	3	3	3	3
+7	Air Cargo Problem 2	greedy_best_first_graph_search h_pg_setlevel	72.0	9.0	11.0	84.0	9.0	7.8552	0.131	2	3	3	3	3
+8	Air Cargo Problem 2	astar_search h_unmet_goals	72.0	2467.0	2469.0	22522.0	9.0	1.291	0.022	2	3	3	3	3
+9	Air Cargo Problem 2	astar_search h_pg_levelsum	72.0	357.0	359.0	3426.0	9.0	131.4084	2.19	2	3	3	3	3
+10	Air Cargo Problem 2	astar_search h_pg_maxlevel	72.0	2887.0	2889.0	26594.0	9.0	312.1989	5.203	2	3	3	3	3
+11	Air Cargo Problem 2	astar_search h_pg_setlevel	72.0	1037.0	1039.0	9605.0	9.0	716.5721	11.943	2	3	3	3	3

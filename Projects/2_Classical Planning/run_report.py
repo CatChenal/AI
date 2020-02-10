@@ -1,13 +1,22 @@
-
+"""
+Modified run_search.py to facilitate reporting (output to tsv).
+"""
 import argparse
 
-from aimacode.search import (breadth_first_search, astar_search,
-    breadth_first_tree_search, depth_first_graph_search, uniform_cost_search,
-    greedy_best_first_graph_search, depth_limited_search,
-    recursive_best_first_search)
-from air_cargo_problems import air_cargo_p1, air_cargo_p2, air_cargo_p3, air_cargo_p4
+from aimacode.search import (breadth_first_search,
+                             astar_search,
+                             breadth_first_tree_search,
+                             depth_first_graph_search,
+                             uniform_cost_search,
+                             greedy_best_first_graph_search,
+                             depth_limited_search,
+                             recursive_best_first_search)
+from air_cargo_problems import (air_cargo_p1,
+                                air_cargo_p2,
+                                air_cargo_p3,
+                                air_cargo_p4)
 
-from _utils import run_search
+from _utils import run_search_rpt
 
     ##############################################################################
     #                 YOU DO NOT NEED TO MODIFY CODE IN THIS FILE                #
@@ -30,13 +39,13 @@ You must either use the -m flag to run in manual mode, or use both the -p and
 choices for each include:
 """
 
-PROBLEMS = [["Air Cargo Problem 1", air_cargo_p1],
-            ["Air Cargo Problem 2", air_cargo_p2],
-            ["Air Cargo Problem 3", air_cargo_p3],
-            ["Air Cargo Problem 4", air_cargo_p4]]
-SEARCHES = [["breadth_first_search", breadth_first_search, ""],
-            ['depth_first_graph_search', depth_first_graph_search, ""],
-            ['uniform_cost_search', uniform_cost_search, ""],
+PROBLEMS = [['Air Cargo Problem 1', air_cargo_p1],
+            ['Air Cargo Problem 2', air_cargo_p2],
+            ['Air Cargo Problem 3', air_cargo_p3],
+            ['Air Cargo Problem 4', air_cargo_p4]]
+SEARCHES = [['breadth_first_search', breadth_first_search, ''],
+            ['depth_first_graph_search', depth_first_graph_search, ''],
+            ['uniform_cost_search', uniform_cost_search, ''],
             ['greedy_best_first_graph_search', greedy_best_first_graph_search, 'h_unmet_goals'],
             ['greedy_best_first_graph_search', greedy_best_first_graph_search, 'h_pg_levelsum'],
             ['greedy_best_first_graph_search', greedy_best_first_graph_search, 'h_pg_maxlevel'],
@@ -65,8 +74,8 @@ def manual():
     print("\n  python {} -p {} -s {}\n".format(
         __file__, " ".join(p_choices), " ".join(s_choices)))
 
-
-def main(p_choices, s_choices):
+# run_search.py main():
+def main0(p_choices, s_choices):
     problems = [PROBLEMS[i-1] for i in map(int, p_choices)]
     searches = [SEARCHES[i-1] for i in map(int, s_choices)]
 
@@ -78,6 +87,30 @@ def main(p_choices, s_choices):
             problem_instance = problem_fn()
             heuristic_fn = None if not heuristic else getattr(problem_instance, heuristic)
             run_search(problem_instance, search_fn, heuristic_fn)
+            
+
+def main(p_choices, s_choices):
+    """
+    modified to facilitate reporting.
+    """
+    problems = [PROBLEMS[i-1] for i in map(int, p_choices)]
+    searches = [SEARCHES[i-1] for i in map(int, s_choices)]
+
+    prev_pname = ''
+    for pname, problem_fn in problems:
+        for sname, search_fn, heuristic in searches:
+            if prev_pname != pname:
+                print("Problem\t{}".format(pname))
+            prev_pname = pname
+            if not heuristic:
+                print("Searcher\t{}".format(sname))
+            else:
+                print("Searcher\t{} {}".format(sname, heuristic))
+
+            problem_instance = problem_fn()
+            heuristic_fn = None if not heuristic else getattr(problem_instance, heuristic)
+            
+            run_search_rpt(problem_instance, search_fn, heuristic_fn)
 
 
 if __name__=="__main__":

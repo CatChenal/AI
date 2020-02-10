@@ -1,4 +1,3 @@
-
 from itertools import product
 from timeit import default_timer as timer
 
@@ -11,11 +10,31 @@ class PrintableProblem(InstrumentedProblem):
     """ InstrumentedProblem keeps track of stats during search, and this class
     modifies the print output of those statistics for air cargo problems.
     """
-    def __repr__(self):
+    def x(self):
         return '{:^10d}  {:^10d}  {:^10d}  {:^10d}'.format(
             len(self.problem.actions_list), self.succs, self.goal_tests, self.states)
+    def out(self):
+        return [len(self.problem.actions_list), self.succs, self.goal_tests, self.states]
 
 
+def run_search_rpt(problem, search_function, parameter=None):
+    ip = PrintableProblem(problem)
+    start = timer()
+    if parameter is not None:
+        node = search_function(ip, parameter)
+    else:
+        node = search_function(ip)
+    end = timer()
+
+    elapsed_time = end - start
+    outip = ip.out()
+
+    s1 = 'Actions\t{:d}\nExpansions\t{:d}\nGoalTests\t{:d}\nNewNodes\t{:d}\n'.format(*outip)
+    s2 = 'PlanLength\t{:d}\nElapsedSeconds\t{:.4f}'.format(len(node.solution()), elapsed_time)
+    print(s1 + s2)
+
+
+# This is the original run_search:
 def run_search(problem, search_function, parameter=None):
     ip = PrintableProblem(problem)
     start = timer()
@@ -31,7 +50,7 @@ def run_search(problem, search_function, parameter=None):
 
 
 def show_solution(node, elapsed_time):
-    print("Plan length: {}  Time elapsed in seconds: {}".format(len(node.solution()), elapsed_time))
+    print("Plan length: {}\nTime elapsed in seconds: {}".format(len(node.solution()), elapsed_time))
     for action in node.solution():
         print("{}{}".format(action.name, action.args))
 

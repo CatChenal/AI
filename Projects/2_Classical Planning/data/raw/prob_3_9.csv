@@ -1,0 +1,8 @@
+Problem	Air Cargo Problem 3
+Searcher	astar_search h_pg_levelsum
+Actions	88
+Expansions	369
+GoalTests	371
+NewNodes	3403
+PlanLength	12
+ElapsedSeconds	213.2484

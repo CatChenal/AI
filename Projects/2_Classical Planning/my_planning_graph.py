@@ -1,4 +1,3 @@
-
 from itertools import chain, combinations
 from aimacode.planning import Action
 from aimacode.utils import expr
@@ -147,7 +146,6 @@ class PlanningGraph:
                 costs.append(LevelCost(graph, goal))
              return sum(costs)
  
- 
           (2) You can implement this function more efficiently than the
               sample pseudocode if you expand the graph one level at a time
               and accumulate the level cost of each goal rather than filling
@@ -157,19 +155,10 @@ class PlanningGraph:
         --------
         Russell-Norvig 10.3.1 (3rd Edition)
 
-        # TODO: Using pseudo code for more efficient algo, fails:
-        levsum = 0
-        while not self._is_leveled:
-            last_layer = self.literal_layers[-1]
-            
-            for g in self.goal:
-                if g in last_layer:                 
-                    levsum += 1
-                    break
-            #levsum += 1
-            # add the next literal layer & repeat
-            self._extend()
-        return levsum        
+        # Reviewer's. find_goal does not exists
+        for g in self.goal:
+            heu_level_sum += self.find_goal(g)
+        return heu_level_sum
         """
         # DONE: using simple implementation pseudo code
         self.fill()
@@ -180,7 +169,7 @@ class PlanningGraph:
                     lev += i
                     break # go to next goal
         return lev 
-    
+
 
     def h_maxlevel(self):
         """ Calculate the max level heuristic for the planning graph
@@ -207,6 +196,12 @@ class PlanningGraph:
         Notes
         -----
         WARNING: you should expect long runtimes using this heuristic with A*
+
+        # Reviewer's, find_goal does not exist
+        heu_max_level = 0
+        for g in self.goal:
+            heu_max_level = max(heu_max_level, self.find_goal(g))
+        return heu_max_level
         """
         # DONE: using pseudo code for more efficient algo
         i = 0
@@ -246,31 +241,9 @@ class PlanningGraph:
         -----
         WARNING: you should expect long runtimes using this heuristic on complex problems
         
-        # TODO: using more efficient algo pseudo code (different implementation): fails
-        level = 0
-        while not self._is_leveled:
-            last_lit_layer = self.literal_layers[-1]
-
-            allGoalsMet = True
-            for g in self.goal:
-                if g not in last_lit_layer:
-                    allGoalsMet = False
-
-                if not allGoalsMet:
-                    # get another layer
-                    continue
-
-            goalsAreMutex = False
-            for goalA, goalB in combinations(self.goal, 2):
-                goalsAreMutex = last_lit_layer.is_mutex(goalA, goalB)
-            
-                if not goalsAreMutex:
-                    return level
-
-             self._extend()
-             level += 1
-        """
-        def AllGoalSeen(layer):
+        # TODO: using more efficient algo pseudo code (different implementation): 
+        # mine:
+                def AllGoalSeen(layer):
             for g in self.goal:
                 if g not in layer:
                     return False
@@ -291,6 +264,24 @@ class PlanningGraph:
 
             self._extend()
             level += 1
+        """
+        # Reviewer's
+        while len(self.literal_layers)<1e6:
+            last_layer = self.literal_layers[-1]
+            if self.goal.issubset(last_layer):
+                no_pair_mutex = True
+                for goal1, goal2 in combinations(self.goal,2):
+                    if last_layer.is_mutex(goal1,goal2):
+                        no_pair_mutex = False
+                        break
+                if no_pair_mutex:
+                    return len(self.literal_layers)-1
+            if self._is_leveled:
+                break
+            self._extend()
+
+        #none found after full expansion?
+        return len(self.literal_layers)-1
 
 
     ##############################################################################

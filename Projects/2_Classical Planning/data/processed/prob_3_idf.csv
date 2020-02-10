@@ -1,0 +1,8 @@
+	Problem	Searcher	Actions	Expansions	GoalTests	NewNodes	PlanLength	ElapsedSeconds
+0	Air Cargo Problem 3	breadth_first_search	88.0	14663.0	18098.0	129625.0	12.0	5.7096
+1	Air Cargo Problem 3	depth_first_graph_search	88.0	408.0	409.0	3364.0	392.0	0.6037
+2	Air Cargo Problem 3	uniform_cost_search	88.0	18510.0	18512.0	161936.0	12.0	7.6687
+3	Air Cargo Problem 3	greedy_best_first_graph_search h_unmet_goals	88.0	25.0	27.0	230.0	15.0	0.0195
+4	Air Cargo Problem 3	greedy_best_first_graph_search h_pg_levelsum	88.0	14.0	16.0	126.0	14.0	12.0456
+5	Air Cargo Problem 3	greedy_best_first_graph_search h_pg_maxlevel	88.0	21.0	23.0	195.0	13.0	5.1019
+6	Air Cargo Problem 3	greedy_best_first_graph_search h_pg_setlevel	88.0	35.0	37.0	345.0	17.0	45.1451

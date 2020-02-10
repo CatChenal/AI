@@ -1,0 +1,1 @@
+Values in csv were reset to 0 for excluded searches or aborted runs (s 11).

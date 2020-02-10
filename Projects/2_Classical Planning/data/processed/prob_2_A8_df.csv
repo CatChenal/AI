@@ -1,0 +1,2 @@
+	Problem	Searcher	Actions	Expansions	GoalTests	NewNodes	PlanLength	ElapsedSeconds
+0	Air Cargo Problem 2	astar_search h_unmet_goals	72.0	2467.0	2469.0	22522.0	9.0	1.2709

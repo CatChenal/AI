@@ -269,7 +269,7 @@ greedy_best_first_graph_search = best_first_graph_search
 
 
 def astar_search(problem, h=None):
-    """A* search is best-first graph search with f(n) = g(n)+h(n).
+    """A* search is best_first_graph_search with f(n) = g(n)+h(n).
     You need to specify the h function when you call astar_search, or
     else in your Problem subclass."""
     h = memoize(h or problem.h, 'h')
@@ -313,8 +313,6 @@ def recursive_best_first_search(problem, h=None):
 # ______________________________________________________________________________
 
 # Code to compare searchers on various problems.
-
-
 class InstrumentedProblem(Problem):
 
     """Delegates to a problem, and keeps statistics."""

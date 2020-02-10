@@ -1,0 +1,8 @@
+Problem	Air Cargo Problem 3
+Searcher	astar_search h_pg_maxlevel
+Actions	0
+Expansions	0
+GoalTests	0
+NewNodes	0
+PlanLength	0
+ElapsedSeconds	0

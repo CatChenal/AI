@@ -1,0 +1,50 @@
+Problem	Air Cargo Problem 4
+Searcher	breadth_first_search
+Actions	104
+Expansions	99736
+GoalTests	114953
+NewNodes	944130
+PlanLength	14
+ElapsedSeconds	53.4933
+Searcher	depth_first_graph_search
+Actions	104
+Expansions	25174
+GoalTests	25175
+NewNodes	228849
+PlanLength	24132
+ElapsedSeconds	2130.1860
+Searcher	uniform_cost_search
+Actions	0
+Expansions	0
+GoalTests	0
+NewNodes	0
+PlanLength	0
+ElapsedSeconds	0
+Searcher	greedy_best_first_graph_search h_unmet_goals
+Actions	104
+Expansions	29
+GoalTests	31
+NewNodes	280
+PlanLength	18
+ElapsedSeconds	0.0322
+Searcher	greedy_best_first_graph_search h_pg_levelsum
+Actions	104
+Expansions	17
+GoalTests	19
+NewNodes	165
+PlanLength	17
+ElapsedSeconds	20.6578
+Searcher	greedy_best_first_graph_search h_pg_maxlevel
+Actions	104
+Expansions	56
+GoalTests	58
+NewNodes	580
+PlanLength	17
+ElapsedSeconds	14.2395
+Searcher	greedy_best_first_graph_search h_pg_setlevel
+Actions	104
+Expansions	107
+GoalTests	109
+NewNodes	1164
+PlanLength	23
+ElapsedSeconds	204.3951

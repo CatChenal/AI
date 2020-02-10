@@ -1,0 +1,2 @@
+	Problem	Searcher	Actions	Expansions	GoalTests	NewNodes	PlanLength	ElapsedSeconds
+0	Air Cargo Problem 2	astar_search h_pg_setlevel	72.0	1037.0	1039.0	9605.0	9.0	724.1061

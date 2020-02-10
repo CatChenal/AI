@@ -1,0 +1,2 @@
+	Problem	Searcher	Actions	Expansions	GoalTests	NewNodes	PlanLength	ElapsedSeconds
+0	Air Cargo Problem 3	astar_search h_pg_maxlevel	88.0	9580.0	9582.0	86312.0	12.0	1878.5883

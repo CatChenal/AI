@@ -1,0 +1,78 @@
+Problem	Air Cargo Problem 2
+Searcher	breadth_first_search
+Actions	72
+Expansions	3343
+GoalTests	4609
+NewNodes	30503
+PlanLength	9
+ElapsedSeconds	1.1433
+Searcher	depth_first_graph_search
+Actions	72
+Expansions	624
+GoalTests	625
+NewNodes	5602
+PlanLength	619
+ElapsedSeconds	1.5969
+Searcher	uniform_cost_search
+Actions	72
+Expansions	5154
+GoalTests	5156
+NewNodes	46618
+PlanLength	9
+ElapsedSeconds	1.8919
+Searcher	greedy_best_first_graph_search h_unmet_goals
+Actions	72
+Expansions	17
+GoalTests	19
+NewNodes	170
+PlanLength	9
+ElapsedSeconds	0.0105
+Searcher	greedy_best_first_graph_search h_pg_levelsum
+Actions	72
+Expansions	9
+GoalTests	11
+NewNodes	86
+PlanLength	9
+ElapsedSeconds	5.2777
+Searcher	greedy_best_first_graph_search h_pg_maxlevel
+Actions	72
+Expansions	27
+GoalTests	29
+NewNodes	249
+PlanLength	9
+ElapsedSeconds	3.0638
+Searcher	greedy_best_first_graph_search h_pg_setlevel
+Actions	72
+Expansions	9
+GoalTests	11
+NewNodes	84
+PlanLength	9
+ElapsedSeconds	7.8552
+Searcher	astar_search h_unmet_goals
+Actions	72
+Expansions	2467
+GoalTests	2469
+NewNodes	22522
+PlanLength	9
+ElapsedSeconds	1.2910
+Searcher	astar_search h_pg_levelsum
+Actions	72
+Expansions	357
+GoalTests	359
+NewNodes	3426
+PlanLength	9
+ElapsedSeconds	131.4084
+Searcher	astar_search h_pg_maxlevel
+Actions	72
+Expansions	2887
+GoalTests	2889
+NewNodes	26594
+PlanLength	9
+ElapsedSeconds	312.1989
+Searcher	astar_search h_pg_setlevel
+Actions	72
+Expansions	1037
+GoalTests	1039
+NewNodes	9605
+PlanLength	9
+ElapsedSeconds	716.5721
